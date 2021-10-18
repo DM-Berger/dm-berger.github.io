@@ -1,0 +1,138 @@
+:root {
+    --color: black;
+    --header-bg-color: rgb(0, 25, 53);
+    --bg-color: rgb(189, 189, 189);
+    --sb-color: #262626;
+    --sidebar-width: 2in;
+    --content-width: 800px;
+    --header-height: 1in;
+    --sidebar-w: 2in;
+    --p1: 2.5px;
+    --p2: calc(2 * var(--p1));
+    --p3: calc(3 * var(--p1));
+    --p4: calc(4 * var(--p1));
+    --p6: calc(6 * var(--p1));
+    --p8: calc(8 * var(--p1));
+    --p16: calc(16 * var(--p1));
+    --p-bottom-pad: var(--p2);
+    --gutter: var(--p8);
+    font-style: normal;
+    font-size: 16px;
+}
+* + * {
+    margin-top: var(--p4);
+}
+html {
+    color: black;
+    font-size: 1.2rem;
+    hyphens: auto;
+    background-color: var(--bg-color);
+    position: relative;
+    width: var(--content-width);
+    margin: 0 auto;
+}
+body {
+    background-color: var(--bg-color);
+}
+hr {
+    color: black;
+    border: 1px solid black;
+    background-color: black;
+    width: 80%;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "Lato";
+    padding-bottom: var(--gutter);
+}
+h1 + h1,
+h1 + h2,
+h2 + h2 {
+    padding-top: var(--gutter) 0;
+}
+
+h1 {
+    font-size: 2rem;
+}
+h2 {
+    font-size: 1.5rem;
+}
+
+section > h1::before:not(:first-of-type) {
+    content: "";
+    position: relative;
+    top: -10px;
+    height: 1px;
+    left: 0%;
+    width: calc(100% - var(--p8));
+    border-bottom: 1px solid #5e5e5e;
+    display: block;
+}
+.header {
+    height: var(--header-height);
+    background-color: var(--header-bg-color);
+    text-align: center;
+    /* line-height: var(--header-height); */
+    color: rgb(241, 241, 241);
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    font-size: 36px;
+}
+.header .email {
+    font-size: 1rem;
+    display: block;
+}
+.sidebar {
+    --color: rgb(219, 219, 219);
+    position: relative;
+    width: var(--sidebar-width);
+    /* display: flex; */
+    /* flex-direction: column; */
+    /* flex-wrap: nowrap; */
+    /* justify-content: flex-start; */
+    /* align-items: flex-start; */
+    /* gap: 1rem; */
+    /* flex: 0 1 auto; */
+    /* left: 0; */
+}
+
+.sidebar section {
+    font-family: "Raleway";
+}
+.sidebar > .contact > p {
+    font-family: "Raleway";
+}
+.sidebar section h1:not(:first-of-type) {
+    padding-top: var(--p4);
+}
+
+pre,
+code {
+    font-family: "Operator Mono Lig", monospace;
+}
+
+p:not(:last-of-type) {
+    padding-bottom: 0.3ch;
+}
+
+code {
+    color: inherit;
+}
+
+img {
+    margin: 0px auto !important;
+    text-align: center !important;
+}
+.repo {
+    padding-bottom: var(--p4);
+}
+.repo .desc {
+    display: inline;
+    position: float;
+}
