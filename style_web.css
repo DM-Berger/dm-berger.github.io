@@ -28,3 +28,191 @@
         /* left: 0; */
     }
 }
+
+:root {
+    --p1: 2.5px;
+    --p2: calc(2 * var(--p1));
+    --p4: calc(4 * var(--p1));
+    --p5: calc(5 * var(--p1));
+    --p6: calc(6 * var(--p1));
+    --p8: calc(8 * var(--p1));
+    --p16: calc(16 * var(--p1));
+    --sb-color: #262626;
+    --sidebar-color: rgb(219, 219, 219);
+    --page-width: 8.5in;
+    --sidebar-width: 2in;
+    --front-page-width: 6.5in; /* subtract above */
+    --page-height: calc(11in - var(--header-height));
+    --gutter: 15px;
+    --sb-gutter: 5px;
+    font-size: 15px;
+}
+html,
+body,
+.all-content,
+.pages {
+    background-color: var(--bg-color);
+    width: var(--page-width);
+    margin: 0 auto;
+    position: relative;
+}
+html {
+    background-color: var(--bg-color);
+}
+.pages {
+    background-color: white;
+}
+/* HEADER */
+.header {
+}
+
+/* SIDEBAR */
+.sidebar {
+    font-size: 0.8rem;
+    width: var(--sidebar-width);
+    height: var(--page-height);
+    position: relative;
+    left: 0;
+    background-color: var(--sb-color);
+    color: var(--sidebar-color);
+}
+.sidebar section:not(.subsection) {
+    padding-top: var(--gutter);
+    padding-left: var(--gutter);
+    padding-right: var(--gutter);
+    font-size: 0.8rem;
+}
+.sidebar section h1,
+.sidebar section h2 {
+    font-family: "Raleway";
+    font-weight: 500;
+}
+.sidebar section h1 {
+    padding-bottom: var(--p2);
+    font-size: 1.2rem;
+}
+.sidebar section h1:not(:first-of-type) {
+    padding-top: var(--p4);
+}
+.sidebar section h2 {
+    margin-top: 0;
+    padding-top: var(--p2);
+    padding-bottom: 5px;
+    font-size: 1rem;
+}
+.sidebar section h1:after {
+    /* add bottom border */
+    /* left: var(--gutter); */
+    left: 0;
+    width: calc(var(--sidebar-width) - 2 * var(--gutter));
+    border-bottom: 1px solid var(--color);
+}
+.sidebar .subsection {
+    margin-top: 0;
+    padding-top: 0;
+}
+/* .sidebar .subsection h2 {
+        font-size: 1rem;
+        padding-top: var(--sb-gutter);
+    } */
+/* SIDEBAR.contact */
+
+/* PAGES */
+.page {
+    width: calc(var(--page-width) - var(--gutter));
+    height: var(--page-height);
+    margin: 0 0 0 0;
+    border-bottom: 1px dashed black;
+    position: absolute;
+}
+.front-page .page {
+    width: var(--front-page-width);
+    height: var(--page-height);
+    position: absolute;
+    top: var(--header-height);
+    left: var(--sidebar-width);
+}
+.front-page .page section {
+    width: calc(var(--front-page-width) - var(--gutter));
+    margin-left: var(--gutter);
+    margin-right: var(--gutter);
+}
+.page h1,
+.page h2 {
+    font-weight: 400;
+    color: rgb(1, 69, 145);
+    font-family: Raleway;
+    font-size: 1.2rem;
+    border-bottom: 0;
+}
+.page h1 + h1,
+.page h2 + h2 {
+    margin-top: var(--p4);
+    padding-top: 0;
+}
+.page h1 {
+    font-size: 1.2rem;
+}
+.page h2 {
+    font-size: 1rem;
+}
+.page h1:after {
+    /* add bottom border */
+    left: 0;
+    /* width: calc(var(--front-page-width) - 2 * var(--gutter)); */
+    width: calc(var(--front-page-width) - 2 * var(--gutter));
+    border-bottom: 1px solid black;
+}
+.front-page section {
+    padding-top: var(--gutter);
+}
+
+/* Page */
+.page section {
+    font-family: "Petrona";
+    font-weight: 300;
+}
+.page section:not(:first-of-type) {
+    padding-top: var(--gutter);
+}
+.page > section > p {
+    line-height: 1.2;
+}
+
+/* LISTS */
+/* Top level */
+.page section > ul {
+    /* list-style: symbols(cyclic "-") outside; */
+    list-style-type: none;
+}
+.page section > ul > li p {
+    padding-left: var(--p4);
+} /* must precede rule below */
+.page section > ul > li p::first-line {
+    padding-left: var(--p8);
+}
+ul + li {
+    padding-top: var(--p2);
+}
+
+/* Second-level */
+.page section > ul > ul {
+    padding-left: var(--p6);
+    padding-bottom: var(--p2);
+}
+.page section > ul > ul li::marker {
+    color: var(--header-bg-color);
+}
+.page section > ul > ul > li {
+    border-left: 2px solid var(--header-bg-color);
+    padding-left: var(--p4);
+    line-height: 0.1px;
+    margin-top: var(--p5);
+    margin-bottom: var(--p1);
+    /* margin-left: calc(0 - var(--p4)); */
+}
+.page section > ul > ul > li > p {
+    padding-bottom: var(--p1);
+    font-size: 0.875rem;
+    /* padding-left: 20px; */
+}
