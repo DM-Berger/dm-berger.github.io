@@ -12,25 +12,29 @@
         --page-width: 8.5in;
         --sidebar-width: 2in;
         --front-page-width: 6.5in; /* subtract above */
-        --page-height: calc(11in - var(--header-height));
+        --page-height: 11in;
+        --main-content-height: calc(var(--page-height) - var(--header-height));
         --gutter: 15px;
         --sb-gutter: 5px;
         font-size: 15px;
     }
-    html,
-    body,
-    .all-content,
-    .pages {
-        background-color: var(--bg-color);
-        width: var(--page-width);
-        margin: 0 auto;
-        position: relative;
-    }
     html {
         background-color: var(--bg-color);
     }
+    .all-content {
+        background-color: white;
+        width: var(--page-width);
+        height: var(--page-height);
+        margin: 0 auto;
+    }
     .pages {
         background-color: white;
+        width: var(--page-width);
+        margin: 0 auto;
+        position: absolute;
+        top: 0;
+    }
+    .pages {
     }
     /* HEADER */
     .header {
@@ -40,8 +44,9 @@
     .sidebar {
         font-size: 0.8rem;
         width: var(--sidebar-width);
-        height: var(--page-height);
+        height: var(--main-content-height);
         position: relative;
+        top: var(--header-height);
         left: 0;
         background-color: var(--sb-color);
         color: var(--sidebar-color);
@@ -90,7 +95,7 @@
     /* PAGES */
     .page {
         width: calc(var(--page-width) - var(--gutter));
-        height: var(--page-height);
+        height: var(--main-content-height);
         margin: 0 0 0 0;
         border-bottom: 1px dashed black;
         position: absolute;
@@ -101,14 +106,14 @@
     .page .subsection h2 {
         padding-bottom: var(--p2);
     }
-    .front-page .page {
+    .page:first-of-type {
         width: var(--front-page-width);
         height: var(--page-height);
         position: absolute;
         top: var(--header-height);
         left: var(--sidebar-width);
     }
-    .front-page .page .section {
+    .page:first-of-type .section {
         width: calc(var(--front-page-width) - var(--gutter));
         padding-top: var(--gutter);
         margin-left: var(--gutter);

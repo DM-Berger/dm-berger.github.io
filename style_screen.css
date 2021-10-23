@@ -9,40 +9,104 @@
         --p16: calc(16 * var(--p1));
         --sb-color: #262626;
         --bg-color: rgb(219, 219, 219);
-        --content-width: 120ch;
-        --sidebar-width: 40ch;
+        --scroll-bar-width: 30px;
+        --content-width: 65vw;
+        /* hack to cover scrollbar gap Chrome.... */
+        --sidebar-width: calc(35vw - var(--scroll-bar-width));
+        --sidebar-max-width: 40ch;
+        --content-max-width: 100ch;
+        --sidebar-max-width: 60ch;
+        --html-width: calc(var(--content-width) + var(--sidebar-width) + var(--scroll-bar-width));
+        --html-max-width: calc(var(--content-max-width) + var(--sidebar-max-width));
         --gutter: 15px;
         --sb-gutter: 5px;
+        --sidebar-height: 200vh;
         font-size: 15px;
     }
-    html,
-    body,
-    .all-content,
-    .pages {
-        background-color: var(--bg-color);
-        height: 100%; /* needed to set sidebar height... */
-        width: var(--content-width);
-        margin: 0 auto;
-        position: relative;
+}
+@supports (scrollbar-width: none) {
+    :root {
+        --scroll-bar-width: 15px;
     }
+}
+
+/* Our "natural" breakpoints, as per resizing in developer tools, are:
+ *
+ *   - less than 800px and sidebar is too wide, content stops fitting at current
+ *     font size
+ *   -
+ */
+@media only screen and (min-width: 800px) and (max-width: 1024px) {
+    /*  */
+}
+/* NOTE: Remove .front-page class. It is not needed, you can get the front page
+ * with just e.g. page(:first-of-type) and the .front-page div causes problems
+ * for making flex containers.
+ */
+/* @media only screen and (min-width: 1024px) { */
+@media only screen {
     html {
         background-color: var(--sb-color);
+        width: 100vw;
+        position: relative;
+        right: 65vw;
+    }
+    .backdrop {
+        width: var(--html-width);
+        max-width: var(--html-max-width);
+        height: 100vh;
+        margin: 0 auto;
+        background-color: var(--bg-color);
+        position: fixed;
+        z-index: -1;
+    }
+    .all-content {
+        background-color: var(--sb-color);
+        width: inherit;
+        max-width: inherit;
+    }
+    .main-content {
+        background-color: white;
     }
     /* HEADER */
     .header {
+        width: 100%;
+        flex-shrink: 0;
+    }
+
+    .pages {
+        background-color: white;
+        width: var(--content-width);
+        max-width: var(--content-max-width);
+        position: relative;
+        left: calc(100vw - var(--scroll-bar-width));
+        top: 0;
+        min-height: 100vh;
     }
 
     /* SIDEBAR */
     .sidebar {
         font-size: 0.8rem;
         width: var(--sidebar-width);
+        max-width: var(--sidebar-max-width);
         position: fixed;
         height: 100vh;
-        left: 0;
-        top: 0;
+        right: var(--content-width);
         background-color: var(--sb-color);
         color: var(--bg-color);
         overflow-y: scroll;
+        scrollbar-width: none;
+        align-self: flex-start;
+    }
+    .stickifier {
+        /* see https://stackoverflow.com/a/57830863, this is the ONLY thing that works when when
+         * the height of the sidebar and content are also dynamic. Note also the height of zero
+         * on the .stickifier is essential for this to work.
+         */
+        position: sticky;
+        top: 0px;
+        height: 0px;
+        align-self: flex-start;
     }
     .sidebar .section:not(.subsection) {
         padding-top: var(--gutter);
@@ -69,8 +133,6 @@
         font-size: 1rem;
     }
     .sidebar .section h1:after {
-        /* add bottom border */
-        /* left: var(--gutter); */
         left: 0;
         width: calc(var(--sidebar-width) - 2 * var(--gutter));
         border-bottom: 1px solid var(--color);
@@ -79,36 +141,28 @@
         margin-top: 0;
         padding-top: 0;
     }
-    /* .sidebar .subsection h2 {
-        font-size: 1rem;
-        padding-top: var(--sb-gutter);
-    } */
     /* SIDEBAR.contact */
 
     /* PAGES */
+    .pages {
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: flex-start;
+        align-items: stretch;
+    }
     .page {
-        width: calc(var(--page-width) - var(--gutter));
         margin: 0 0 0 0;
-        border-bottom: 1px dashed black;
-        position: absolute;
+        flex-grow: 1;
+    }
+    .page .section {
+        padding-left: var(--p4);
+        padding-top: var(--p4);
     }
     .page .subsection {
         padding-top: var(--p2);
     }
     .page .subsection h2 {
         padding-bottom: var(--p2);
-    }
-    .front-page .page {
-        width: var(--front-page-width);
-        position: absolute;
-        top: var(--header-height);
-        left: var(--sidebar-width);
-    }
-    .front-page .page .section {
-        width: calc(var(--front-page-width) - var(--gutter));
-        padding-top: var(--gutter);
-        margin-left: var(--gutter);
-        margin-right: var(--gutter);
     }
     .page h1,
     .page h2 {
@@ -132,8 +186,6 @@
     .page h1:after {
         /* add bottom border */
         left: 0;
-        /* width: calc(var(--front-page-width) - 2 * var(--gutter)); */
-        width: calc(var(--front-page-width) - 2 * var(--gutter));
         border-bottom: 1px solid black;
     }
 
