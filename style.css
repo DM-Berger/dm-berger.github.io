@@ -28,7 +28,6 @@ html {
     hyphens: auto;
     background-color: var(--bg-color);
     position: relative;
-    width: var(--content-width);
     margin: 0 auto;
 }
 body {
@@ -91,7 +90,6 @@ section > h1::before:not(:first-of-type) {
 .sidebar {
     --color: rgb(219, 219, 219);
     position: relative;
-    width: var(--sidebar-width);
     /* display: flex; */
     /* flex-direction: column; */
     /* flex-wrap: nowrap; */
