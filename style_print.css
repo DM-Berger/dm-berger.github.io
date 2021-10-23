@@ -94,11 +94,12 @@
 
     /* PAGES */
     .page {
-        width: calc(var(--page-width) - var(--gutter));
+        width: calc(var(--page-width) - var(--gutter) - var(--sidebar-width));
         height: var(--main-content-height);
         margin: 0 0 0 0;
         border-bottom: 1px dashed black;
         position: absolute;
+        left: var(--sidebar-width);
     }
     .page .subsection {
         padding-top: var(--p2);
@@ -150,8 +151,9 @@
     .page .section {
         font-family: "Petrona";
         font-weight: 300;
+        padding-left: var(--gutter);
     }
-    .page .section:not(:first-of-type) {
+    .page .section {
         padding-top: var(--gutter);
     }
     .page > .section > p {
