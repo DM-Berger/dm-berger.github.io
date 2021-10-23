@@ -101,6 +101,11 @@
         position: absolute;
         left: var(--sidebar-width);
     }
+    .page + .page {
+        /* page 2 */
+        top: var(--page-height);
+        background-color: white;
+    }
     .page .subsection {
         padding-top: var(--p2);
     }
