@@ -34,6 +34,9 @@
         position: absolute;
         top: 0;
     }
+    .about {
+        display: none;
+    }
     .pages {
     }
     /* HEADER */
@@ -97,13 +100,17 @@
         width: calc(var(--page-width) - var(--gutter) - var(--sidebar-width));
         height: var(--main-content-height);
         margin: 0 0 0 0;
-        border-bottom: 1px dashed black;
         position: absolute;
         left: var(--sidebar-width);
+        box-sizing: border-box;
     }
     .page + .page {
         /* page 2 */
+        position: absolute;
         top: var(--page-height);
+        left: 0;
+        width: var(--page-width);
+        height: var(--page-height);
         background-color: white;
     }
     .page .subsection {

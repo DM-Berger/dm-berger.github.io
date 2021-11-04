@@ -9,6 +9,7 @@
         --p16: calc(16 * var(--p1));
         --sb-color: #262626;
         --bg-color: rgb(219, 219, 219);
+        --bullet-color: rgb(143, 143, 143);
         --scroll-bar-width: 30px;
         --content-width: 65vw;
         /* hack to cover scrollbar gap Chrome.... */
@@ -95,6 +96,7 @@
         background-color: var(--sb-color);
         color: var(--bg-color);
         overflow-y: scroll;
+        overflow-x: hidden; /* disables strange scolling behaviour on iPhone */
         scrollbar-width: none;
         align-self: flex-start;
     }
@@ -113,6 +115,9 @@
         padding-left: var(--gutter);
         padding-right: var(--gutter);
         font-size: 0.8rem;
+    }
+    .sidebar .section:last-of-type {
+        padding-bottom: var(--gutter);
     }
     .sidebar .section h1,
     .sidebar .section h2 {
@@ -157,6 +162,9 @@
     .page .section {
         padding-left: var(--p4);
         padding-top: var(--p4);
+    }
+    .page .about {
+        padding-bottom: var(--p4);
     }
     .page .subsection {
         padding-top: var(--p2);
@@ -230,16 +238,17 @@
         color: var(--header-bg-color);
     }
     .page section > ul > ul > li {
-        border-left: 2px solid var(--header-bg-color);
+        border-left: 2px solid var(--bullet-color);
         padding-left: var(--p4);
-        line-height: 0.1px;
-        margin-top: var(--p5);
-        margin-bottom: var(--p1);
+        /* line-height: 0.1px; */
+        margin-top: var(--p2);
+        /* margin-bottom: var(--p1); */
         /* margin-left: calc(0 - var(--p4)); */
     }
     .page section > ul > ul > li > p {
         padding-bottom: var(--p1);
         font-size: 0.875rem;
+        line-height: 0.7rem;
         /* padding-left: 20px; */
     }
     /* repo sections */

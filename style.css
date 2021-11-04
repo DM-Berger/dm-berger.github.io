@@ -127,6 +127,7 @@ img {
 }
 .repo {
     padding-bottom: var(--p4);
+    padding-left: var(--p4);
 }
 .repo .desc {
     display: inline;
