@@ -1,0 +1,57 @@
+@media only screen and (max-width: 600px) {
+    :root {
+        --p1: 2.5px;
+        --p2: calc(2 * var(--p1));
+        --p4: calc(4 * var(--p1));
+        --p5: calc(5 * var(--p1));
+        --p6: calc(6 * var(--p1));
+        --p8: calc(8 * var(--p1));
+        --p16: calc(16 * var(--p1));
+        --sb-color: #262626;
+        --bg-color: rgb(219, 219, 219);
+        --bullet-color: rgb(143, 143, 143);
+        --scroll-bar-width: 0px;
+        --content-width: 80vw;
+        /* hack to cover scrollbar gap Chrome.... */
+        --sidebar-width: calc(100vw - var(--content-width));
+        --sidebar-max-width: 40ch;
+        --content-max-width: 100ch;
+        --sidebar-max-width: 60ch;
+        --html-width: calc(var(--content-width) + var(--sidebar-width) + var(--scroll-bar-width));
+        --html-max-width: calc(var(--content-max-width) + var(--sidebar-max-width));
+        --gutter: 15px;
+        --sb-gutter: 0px;
+        --sidebar-height: 200vh;
+        font-size: 15px;
+    }
+    html {
+        right: var(--content-width);
+    }
+    .sidebar {
+        width: var(--sidebar-width);
+    }
+    .sidebar .section,
+    .sidebar .section:not(.subsection) {
+        font-size: 0.6rem;
+        padding-left: var(--p1);
+    }
+    .sidebar .content {
+        padding: var(--p1);
+    }
+    .sidebar .section h1,
+    .sidebar .subsection h2,
+    .sidbar .section h2 {
+        font-size: 0.6rem;
+        font-weight: 600;
+    }
+    .sidebar h2 {
+        font-size: 0.6rem;
+        font-weight: 600;
+    }
+    .all-content {
+        /* margin-left: calc(2 * var(--gutter)); */
+    }
+    .pages {
+        /* left: calc(100vw + 2 * var(--gutter)); */
+    }
+}
