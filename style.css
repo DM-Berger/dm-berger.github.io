@@ -85,6 +85,10 @@ section > h1::before:not(:first-of-type) {
     font-size: 1rem;
     display: block;
 }
+#clicker,
+.sidebar-toggle {
+    display: none;
+}
 .sidebar {
     --color: rgb(219, 219, 219);
     /* position: relative; */

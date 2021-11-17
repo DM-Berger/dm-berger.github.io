@@ -268,7 +268,7 @@
         padding-left: var(--p4);
     }
     .citation + .citation {
-        padding-top: var(--p2);
+        padding-top: var(--p4);
     }
     .authors {
         /* do not show in print to save space */
