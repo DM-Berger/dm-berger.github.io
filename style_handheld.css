@@ -31,6 +31,7 @@
         display: flex;
         flex-direction: column;
         flex-flow: flex-start;
+        background-color: hsla(0, 0, 0, 0);
     }
     .pages {
         order: 0;
@@ -45,10 +46,12 @@
 
     /* SIDEBAR */
     .sidebar {
-        position: unset; /* remove fixed */
+        position: fixed; /* remove fixed */
+        right: 100vw;
         width: 100vw;
         height: 100%;
         order: 1;
+        transition: 0.2s ease-out;
     }
     h1,
     h2,
@@ -104,13 +107,13 @@
     #clicker:checked ~ .sidebar {
         position: fixed;
         top: 0;
-        left: 0;
+        right: 0;
     }
     #clicker:checked ~ .sidebar ~ .pages {
         display: none;
     }
     #clicker:checked ~ .sidebar ~ .pages ~ .sidebar-toggle {
-        transform: rotate3d(0, 0, 1, 180deg) translateY(97vh) translateX(-46vw);
+        transform: rotate3d(0, 0, 1, 180deg);
         transform-origin: center;
         /* transition: 0.2s ease-in-out; */
     }
@@ -118,14 +121,15 @@
         display: block;
         position: fixed;
         perspective: 1px;
-        top: 95vh;
+        top: 50vh;
+        left: 0vw;
         width: 2ch;
         margin: 0 auto;
         text-align: center;
         color: var(--bg-color);
         font-weight: 600;
-        font-size: 2rem;
-        transform: translateX(46vw);
+        font-size: 1.2rem;
+        /* transform: translateX(46vw); */
         /* transition: 0.2s ease-in-out; */
     }
 
